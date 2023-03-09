@@ -34,3 +34,4 @@ Developing the idea:
     2. Another resource we could potentially translate is [SuperGLUE](https://paperswithcode.com/dataset/superglue).
     3. Yet another resource focused on Q&A is [this one here](https://rajpurkar.github.io/SQuAD-explorer/).
     4. Another idea is to translate annotated TV subtitles found [here](https://github.com/zll17/TV4Dialog) with documentation [here](https://ieeexplore.ieee.org/document/9023129).
+    5. **IMPORTANT**: We need to estimate how much data is enough to properly train a model.
