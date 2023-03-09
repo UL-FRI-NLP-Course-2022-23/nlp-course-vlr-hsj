@@ -29,3 +29,8 @@ Developing the idea:
       * Generated questions and answers from SSKJ.
       * Generated questions and answers from factual data sources, example can be found [here](https://podatki.gov.si/data/search?publisher=ministrstvo_za_javno_upravo&all_licence=%2F&page=2)
       * We use ChatGPT/Google to generate $x$ question and answers about some topic $y$.
+ 3. Follow up to inital ideas:  
+    1. [Clarin](http://www.clarin.si/info/about/) could be used as an overall resource for both models and data in Slovene.
+    2. Another resource we could potentially translate is [SuperGLUE](https://paperswithcode.com/dataset/superglue).
+    3. Yet another resource focused on Q&A is [this one here](https://rajpurkar.github.io/SQuAD-explorer/).
+    4. Another idea is to translate annotated TV subtitles found [here](https://github.com/zll17/TV4Dialog) with documentation [here](https://ieeexplore.ieee.org/document/9023129).
