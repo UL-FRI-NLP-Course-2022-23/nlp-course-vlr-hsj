@@ -1,0 +1,229 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FRI Data Science_report LaTeX Template
+% Version 1.0 (28/1/2020)
+% 
+% Jure Demšar (jure.demsar@fri.uni-lj.si)
+%
+% Based on MicromouseSymp article template by:
+% Mathias Legrand (legrand.mathias@gmail.com) 
+% With extensive modifications by:
+% Antonio Valente (antonio.luis.valente@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[fleqn,moreauthors,10pt]{ds_report}
+\usepackage[english]{babel}
+
+\graphicspath{{fig/}}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+% Header
+\JournalInfo{Natural Language Processing 2023}
+
+% Interim or final report
+\Archive{First submission report} 
+%\Archive{Final report} 
+
+% Article title
+\PaperTitle{Slovenian Language Assistance Bot (SLAB)} 
+
+% Authors (student competitors) and their info
+\Authors{Luka Škodnik, Robert Jutreša, Valter Hudovernik}
+
+% Advisors
+\affiliation{\textit{Advisors: doc. dr. Slavko Žitnik}}
+
+% Keywords
+\Keywords{LLM, ...}
+\newcommand{\keywordname}{Keywords}
+
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\Abstract{
+Slavko je car!
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Makes all text pages the same height
+\flushbottom 
+
+% Print the title and abstract box
+\maketitle 
+
+% Removes page numbering from the first page
+\thispagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section*{Introduction}
+	Natural Language Processing (NLP) is an exciting field of Artificial Intelligence that focuses on teaching machines how to understand and respond to human language. 
+    In this report, we will discuss our project for the Natural Language Processing course 2022/23, where we aim to develop a Slovenian Language Assistance Bot (SLAB) using NLP techniques.
+    We will provide an overview of our preliminary research, discuss our idea to use a GPT-based model, and explore various data sources that we plan to use to train our model.
+    Finally, we will discuss the importance of estimating the amount of data required to train a model effectively.
+
+ \section*{Initial Plan}
+    Due to large amounts of conversational datasets being available in other languages. We focus on translating the most widely used and well-composed datasets into Slovenian. For this reason, one of our main tasks is developing a framework for robust translation from English to Slovene. \\
+    However recent works, specifically the GPT-4 
+    % WE DO NOT CITE THIS!! IT IS NOT A RESEARCH PAPER IT IS AN AD
+    report by Openai has pointed out that pre-training had much more of an effect on the performance of the model as opposed to fine-tuning. For this reason, we also put an emphasis on using and looking into additional resources for unsupervised pre-training for the Slovenian language, such as the NLP project by Jurkovič et. al.
+
+    
+\section*{Related Work}
+
+% Attention & Transformers
+Attention \cite{vaswani2017attention} is a key component of transformer models, which are widely used in natural language processing tasks such as language translation and text summarization.
+It is also a part of many modern large language models (LLM) that we will use during this project.
+In transformer models, attention mechanisms allow the model to focus on the most relevant parts of the input sequence at each step of processing.
+This is achieved by assigning weights to each element in the input sequence based on its relevance to the current step.
+By doing so, the transformer can capture long-range dependencies between different parts of the input sequence, which is particularly important for language processing.
+% Fine-tuning large language models (LLM) can improve the performance of conversational AI systems that support the Slovene language, as it allows the model to better understand the nuances of the language and provide more accurate responses.
+
+% 3P
+The P3 dataset is a collection of prompted English datasets covering a diverse set of NLP tasks. The use of prompts allows for the creation of consistent and standardized data examples across different datasets, which can facilitate the development of new models and the comparison of results across different tasks \cite{bach2022promptsource}. 
+
+% TV Series Subtitles
+A corpus of automatically annotated TV series subtitles for dialogue construction was developed in \cite{tv_series_subtitles}. The authors used a combination of rule-based and machine-learning techniques to identify speaker turns and assign speaker identities. They evaluated their method on a corpus of subtitled TV series episodes and achieved high accuracy in speaker identification and turn-taking recognition. The resulting corpus was used for various downstream tasks such as emotion recognition and dialogue act classification.
+
+% GOS
+GOS is a reference corpus of spoken Slovene language. The methodology used to collect the corpus involved recording conversations of native Slovene speakers in various domains such as business, education, and social interactions. The transcription process involved annotating the recordings with orthographic, phonetic, and prosodic information. The resulting corpus was used for various research tasks such as acoustic modeling, speaker recognition, and speech synthesis \cite{Verdonik2013}. 
+
+% BLOOM
+BLOOM \cite{scao2022bloom} a multilingual LLM  was trained on the ROOTS corpus \cite{roots}, amounting to 1.61 terabytes of text that span 46 natural languages and 13 programming languages. Unfortunately Slovenian is not one of the available languages. However, due to vast collections of datasets available such as  Hugging Face datasets \cite{lhoest2021datasets}, we focus on developing tools for robust translation in order to translate the large amounts of available data to Slovenian in order to facilitate the development of a conversational LLM.
+
+% SloBERTa
+SloBERTa is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models \cite{ulvcar2021sloberta}. 
+%------------------------------------------------
+
+\section*{Methods}
+
+% Use the Methods section to describe what you did an how you did it -- in what way did you prepare the data, what algorithms did you use, how did you test various solutions ... Provide all the required details for a reproduction of your work.
+
+% Below are \LaTeX examples of some common elements that you will probably need when writing your report (e.g. figures, equations, lists, code examples ...).
+
+% You can write equations inline, e.g. $\cos\pi=-1$, $E = m \cdot c^2$ and $\alpha$, or you can include them as separate objects. The Bayes’s rule is stated mathematically as:
+
+%\begin{equation}
+%	P(A|B) = \frac{P(B|A)P(A)}{P(B)},
+%	\label{eq:bayes}
+%\end{equation}
+
+% where $A$ and $B$ are some events. You can also reference it -- the equation \ref{eq:bayes} describes the Bayes's rule.
+
+
+% We can insert numbered and bullet lists:
+
+% the [noitemsep] option makes the list more compact
+%\begin{enumerate}[noitemsep] 
+%	\item First item in the list.
+%	\item Second item in the list.
+%	\item Third item in the list.
+%\end{enumerate}
+
+
+% You can insert figures that span over the whole page, or over just a single column. The first one, \figurename~\ref{fig:column}, is an example of a figure that spans only across one of the two columns in the report.
+
+% \begin{figure}[ht]\centering
+% 	\includegraphics[width=\linewidth]{single_column.pdf}
+% 	\caption{\textbf{A random visualization.} This is an example of a figure that spans only across one of the two columns.}
+% 	\label{fig:column}
+% \end{figure}
+
+% On the other hand, \figurename~\ref{fig:whole} is an example of a figure that spans across the whole page (across both columns) of the report.
+
+% \begin{figure*} makes the figure take up the entire width of the page
+% \begin{figure*}[ht]\centering 
+% 	\includegraphics[width=\linewidth]{whole_page.pdf}
+% 	\caption{\textbf{Visualization of a Bayesian hierarchical model.} This is an example of a figure that spans the whole width of the report.}
+% 	\label{fig:whole}
+% \end{figure*}
+
+
+% Use the table environment to insert tables.
+
+%\begin{table}[hbt]
+%	\caption{Table of grades.}
+%	\centering
+%	\begin{tabular}{l l | r}
+%		\toprule
+%		\multicolumn{2}{c}{Name} \\
+%		\cmidrule(r){1-2}
+%		First name & Last Name & Grade \\
+%		\midrule
+%		John & Doe & $7.5$ \\
+%		Jane & Doe & $10$ \\
+%		Mike & Smith & $8$ \\
+%		\bottomrule
+%	\end{tabular}
+%	\label{tab:label}
+%\end{table}
+
+% You can also insert short code examples. You can specify them manually, or insert a whole file with code. Please avoid inserting long code snippets, advisors will have access to your repositories and can take a look at your code there. If necessary, you can use this technique to insert code (or pseudo code) of short algorithms that are crucial for the understanding of the manuscript.
+
+%\lstset{language=Python}
+%\lstset{caption={Insert code directly from a file.}}
+%\lstset{label={lst:code_file}}
+%\lstinputlisting[language=Python]{code/example.py}
+
+%\lstset{language=R}
+%\lstset{caption={Write the code you want to insert.}}
+%\lstset{label={lst:code_direct}}
+%\begin{lstlisting}
+%import(dplyr)
+%import(ggplot)
+%
+%ggplot(diamonds,
+%	   aes(x=carat, y=price, color=cut)) +
+% geom_point() +
+%  geom_smooth()
+%\end{lstlisting}
+
+%------------------------------------------------
+
+\section*{Results}
+
+% Use the results section to present the final results of your work. Present the results in a objective and scientific fashion. Use visualisations to convey your results in a clear and efficient manner. When comparing results between various techniques use appropriate statistical methodology.
+
+
+%------------------------------------------------
+
+\section*{Discussion}
+
+% Use the Discussion section to objectively evaluate your work, do not just put praise on everything you did, be critical and exposes flaws and weaknesses of your solution. You can also explain what you would do differently if you would be able to start again and what upgrades could be done on the project in the future.
+
+
+%------------------------------------------------
+
+\section*{Acknowledgments}
+
+% Here you can thank other persons (advisors, colleagues ...) that contributed to the successful completion of your project.
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\bibliographystyle{unsrt}
+\bibliography{report}
+
+
+\end{document}
