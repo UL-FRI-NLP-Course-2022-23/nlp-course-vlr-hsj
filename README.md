@@ -37,4 +37,4 @@ Developing the idea:
     5. **IMPORTANT**: We need to estimate how much data is enough to properly train a model.
 
 **Possible tools**:
-- https://haystack.deepset.ai/overview/intro
+- All-In-One NLP pipelines: https://haystack.deepset.ai/overview/intro
