@@ -47,7 +47,7 @@
 \affiliation{\textit{Advisors: doc. dr. Slavko Žitnik}}
 
 % Keywords
-\Keywords{LLM, ...}
+\Keywords{Large Language Models, Machine Translation, Conversational AI, Slovene, Question Answering}
 \newcommand{\keywordname}{Keywords}
 
 
@@ -83,10 +83,19 @@ Slavko je car!
     Finally, we will discuss the importance of estimating the amount of data required to train a model effectively.
 
  \section*{Initial Plan}
-    Due to large amounts of conversational datasets being available in other languages. We focus on translating the most widely used and well-composed datasets into Slovenian. For this reason, one of our main tasks is developing a framework for robust translation from English to Slovene. \\
-    However recent works, specifically the GPT-4 
-    % WE DO NOT CITE THIS!! IT IS NOT A RESEARCH PAPER IT IS AN AD
-    report by Openai has pointed out that pre-training had much more of an effect on the performance of the model as opposed to fine-tuning. For this reason, we also put an emphasis on using and looking into additional resources for unsupervised pre-training for the Slovenian language, such as the NLP project by Jurkovič et. al.
+    Due to large amounts of conversational datasets being available in other languages. We focus on translating the most widely used and well-composed datasets into Slovenian. For this reason, one of our main tasks is developing a framework for robust translation from English to Slovene. 
+    
+    Our initial idea for doing this is to use multiple methods of translation and aggregate the results in a meaningful way. 
+    To this aim we consider the Slovene NMT \cite{11356/1736}, NLLB-200 \cite{nllb2022}, DeeplTranslator \cite{deepl}, GoogleTranslate \cite{google-translate}, or other open-source translator supported by the deep translator python library \cite{deep_transaltor}.
+    The initial idea is to produce a metric of agreement on the individual translations and in this way filter the translated data.
+    This should reduce the individual mistakes of each of the used methods and yield at least some usable data for further use.
+
+    For evaluating the quality of translations and generating new data examples we look at adapting the Self-Instruct \cite{wang2022selfinstruct} pipeline for self supervised data filtering.
+    
+    An interesting remark in the recent GPT-4 report by Openai claims that pre-training had much more of an effect on the performance of the model as opposed to fine-tuning. However, we disclaim that this is a statement we are not able to verify as thier results are not reporoducible. 
+    Still, they have been in the foreground of the recent LLM developments so, we also put an emphasis on using and looking into additional resources for additional unsupervised pre-training for the Slovenian language. 
+
+    To this purpose we examine the following resources; the NLP project of other groups and large Slovenian language corpuses such as Gigafida and KRES \cite{11356/1320}, we also consider the Šolar corpus \cite{kosem2011slovenian}, with considerations that the written language of primary and high school students could potentially have an impact on the models performance, and GOS \cite{Verdonik2013} with similar considerations about spoken language.
 
     
 \section*{Related Work}
@@ -97,7 +106,6 @@ It is also a part of many modern large language models (LLM) that we will use du
 In transformer models, attention mechanisms allow the model to focus on the most relevant parts of the input sequence at each step of processing.
 This is achieved by assigning weights to each element in the input sequence based on its relevance to the current step.
 By doing so, the transformer can capture long-range dependencies between different parts of the input sequence, which is particularly important for language processing.
-% Fine-tuning large language models (LLM) can improve the performance of conversational AI systems that support the Slovene language, as it allows the model to better understand the nuances of the language and provide more accurate responses.
 
 % 3P
 The P3 dataset is a collection of prompted English datasets covering a diverse set of NLP tasks. The use of prompts allows for the creation of consistent and standardized data examples across different datasets, which can facilitate the development of new models and the comparison of results across different tasks \cite{bach2022promptsource}. 
@@ -106,13 +114,22 @@ The P3 dataset is a collection of prompted English datasets covering a diverse s
 A corpus of automatically annotated TV series subtitles for dialogue construction was developed in \cite{tv_series_subtitles}. The authors used a combination of rule-based and machine-learning techniques to identify speaker turns and assign speaker identities. They evaluated their method on a corpus of subtitled TV series episodes and achieved high accuracy in speaker identification and turn-taking recognition. The resulting corpus was used for various downstream tasks such as emotion recognition and dialogue act classification.
 
 % GOS
-GOS is a reference corpus of spoken Slovene language. The methodology used to collect the corpus involved recording conversations of native Slovene speakers in various domains such as business, education, and social interactions. The transcription process involved annotating the recordings with orthographic, phonetic, and prosodic information. The resulting corpus was used for various research tasks such as acoustic modeling, speaker recognition, and speech synthesis \cite{Verdonik2013}. 
+GOS \cite{Verdonik2013} is a reference corpus of spoken Slovene language. The methodology used to collect the corpus involved recording conversations of native Slovene speakers in various domains such as business, education, and social interactions. The transcription process involved annotating the recordings with orthographic, phonetic, and prosodic information. The resulting corpus was used for various research tasks such as acoustic modeling, speaker recognition, and speech synthesis. 
+
+%Alpaca
+Alpaca \cite{alpaca} by Standford University is a set consisting of a data generation procedure, dataset, and training recipe. It is a fine tuned model from 7B LLaMA \cite{touvron2023llama} on 52K instruction-following data generated by the techniques in the Self-Instruct \cite{wang2022selfinstruct} paper, with some modifications. In a preliminary human evaluation, it was found that the Alpaca 7B model behaves similarly to the GPT-3 model on the Self-Instruct instruction-following evaluation suite.
 
 % BLOOM
 BLOOM \cite{scao2022bloom} a multilingual LLM  was trained on the ROOTS corpus \cite{roots}, amounting to 1.61 terabytes of text that span 46 natural languages and 13 programming languages. Unfortunately Slovenian is not one of the available languages. However, due to vast collections of datasets available such as  Hugging Face datasets \cite{lhoest2021datasets}, we focus on developing tools for robust translation in order to translate the large amounts of available data to Slovenian in order to facilitate the development of a conversational LLM.
 
 % SloBERTa
-SloBERTa is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models \cite{ulvcar2021sloberta}. 
+SloBERTa \cite{ulvcar2021sloberta} is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models. 
+
+%SuperGLUE
+SuperGLUE \cite{wang2019superglue} is a benchmark for evaluating the performance of natural language understanding models. It consists of eight challenging natural language understanding tasks, including both textual entailment and commonsense reasoning tasks. The benchmark is designed to test the ability of models to handle more complex linguistic phenomena and to generalize to new examples. The authors compare the performance of several state-of-the-art models on SuperGLUE and find that there is still a significant gap between the best models and human performance.
+
+%UnifiedQA Slo
+The paper \cite{logar2022unified} discusses the challenges of question answering for less-resourced languages and presents an adaptation of the English UnifiedQA approach to the Slovene language. The adaptation uses encoder-decoder transformer models (SloT5 and mT5) to handle different question-answering formats, and existing Slovene adaptations of four datasets, as well as machine translation of the MCTest dataset. The study shows that a general model can perform at least as well as specialized models for answering questions in different formats. However, the performance of the Slovene model still lags behind that of English, and cross-lingual transfer from English is used to improve the results.
 %------------------------------------------------
 
 \section*{Methods}
