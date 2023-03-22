@@ -111,6 +111,10 @@ By doing so, the transformer can capture long-range dependencies between differe
 % SloBERTa
 SloBERTa \cite{ulvcar2021sloberta} is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models. 
 
+% Instruct GPT
+We examine the alignment of language model paradigm using reinforcement learning such as InstructGPT \cite{ouyang2022training}. However due to the lack of resources we instead focus our attention to using already compiled high quality datasets for a one-time training of our model. However their work points out the total number of collective prompts used in training their model, which was $77k$. This gives us an approximate estimate of how much data to use in the fine-tuning process. Additionally they discuss deduplication, however in future works such as \cite{alpaca} have pointed out that repeating prompts is not a big issue.
+%% IS THIS TRUE Valter, ARE YOU BULLSHITTING? source: Yannick Kilcher video 
+
 \subsection*{Datasets}
 % 3P
 The P3 dataset is a collection of prompted English datasets covering a diverse set of NLP tasks. The use of prompts allows for the creation of consistent and standardized data examples across different datasets, which can facilitate the development of new models and the comparison of results across different tasks \cite{bach2022promptsource}. 
@@ -126,7 +130,6 @@ Alpaca \cite{alpaca} by Standford University is a set consisting of a data gener
 
 % BLOOM
 BLOOM \cite{scao2022bloom} a multilingual LLM  was trained on the ROOTS corpus \cite{roots}, amounting to 1.61 terabytes of text that span 46 natural languages and 13 programming languages. Unfortunately Slovenian is not one of the available languages. However, due to vast collections of datasets available such as  Hugging Face datasets \cite{lhoest2021datasets}, we focus on developing tools for robust translation in order to translate the large amounts of available data to Slovenian in order to facilitate the development of a conversational LLM.
-
 
 
 %SuperGLUE
