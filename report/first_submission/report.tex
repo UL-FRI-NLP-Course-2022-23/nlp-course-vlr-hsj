@@ -93,20 +93,25 @@ Slavko je car!
     For evaluating the quality of translations and generating new data examples we look at adapting the Self-Instruct \cite{wang2022selfinstruct} pipeline for self supervised data filtering.
     
     An interesting remark in the recent GPT-4 report by Openai claims that pre-training had much more of an effect on the performance of the model as opposed to fine-tuning. However, we disclaim that this is a statement we are not able to verify as thier results are not reporoducible. 
-    Still, they have been in the foreground of the recent LLM developments so, we also put an emphasis on using and looking into additional resources for additional unsupervised pre-training for the Slovenian language. 
+    Still, they have been in the foreground of the recent LLM developments so, we also put an emphasis on using and looking into additional resources for unsupervised pre-training for the Slovenian language. 
 
-    To this purpose we examine the following resources; the NLP project of other groups and large Slovenian language corpuses such as Gigafida and KRES \cite{11356/1320}, we also consider the Šolar corpus \cite{kosem2011slovenian}, with considerations that the written language of primary and high school students could potentially have an impact on the models performance, and GOS \cite{Verdonik2013} with similar considerations about spoken language.
+    To this purpose we examine the following resources; the NLP projects of other groups and large Slovenian language corpuses such as Gigafida~\cite{11356/1320} and ccKRES~\cite{ccKres} , we also consider the Šolar corpus \cite{kosem2011slovenian}, with considerations that the written language of primary and high school students could potentially have an impact on the models performance, and GOS \cite{Verdonik2013} with similar considerations about spoken language.
 
     
 \section*{Related Work}
 
 % Attention & Transformers
+\subsection*{Transformers \& Large Language Models}
 Attention \cite{vaswani2017attention} is a key component of transformer models, which are widely used in natural language processing tasks such as language translation and text summarization.
 It is also a part of many modern large language models (LLM) that we will use during this project.
 In transformer models, attention mechanisms allow the model to focus on the most relevant parts of the input sequence at each step of processing.
 This is achieved by assigning weights to each element in the input sequence based on its relevance to the current step.
 By doing so, the transformer can capture long-range dependencies between different parts of the input sequence, which is particularly important for language processing.
 
+% SloBERTa
+SloBERTa \cite{ulvcar2021sloberta} is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models. 
+
+\subsection*{Datasets}
 % 3P
 The P3 dataset is a collection of prompted English datasets covering a diverse set of NLP tasks. The use of prompts allows for the creation of consistent and standardized data examples across different datasets, which can facilitate the development of new models and the comparison of results across different tasks \cite{bach2022promptsource}. 
 
@@ -122,8 +127,7 @@ Alpaca \cite{alpaca} by Standford University is a set consisting of a data gener
 % BLOOM
 BLOOM \cite{scao2022bloom} a multilingual LLM  was trained on the ROOTS corpus \cite{roots}, amounting to 1.61 terabytes of text that span 46 natural languages and 13 programming languages. Unfortunately Slovenian is not one of the available languages. However, due to vast collections of datasets available such as  Hugging Face datasets \cite{lhoest2021datasets}, we focus on developing tools for robust translation in order to translate the large amounts of available data to Slovenian in order to facilitate the development of a conversational LLM.
 
-% SloBERTa
-SloBERTa \cite{ulvcar2021sloberta} is a Slovene large language model. It is a large pre-trained masked language model based on the BERT architecture. The authors trained the model on a large corpus of Slovene text and evaluated it on various downstream tasks such as text classification, named entity recognition, and part-of-speech tagging. The results show that SloBERTa outperforms existing Slovene language models and achieves competitive performance with state-of-the-art multilingual language models. 
+
 
 %SuperGLUE
 SuperGLUE \cite{wang2019superglue} is a benchmark for evaluating the performance of natural language understanding models. It consists of eight challenging natural language understanding tasks, including both textual entailment and commonsense reasoning tasks. The benchmark is designed to test the ability of models to handle more complex linguistic phenomena and to generalize to new examples. The authors compare the performance of several state-of-the-art models on SuperGLUE and find that there is still a significant gap between the best models and human performance.
