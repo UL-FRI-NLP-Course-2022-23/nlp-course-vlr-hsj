@@ -8,13 +8,7 @@ Team members:
 Group public acronym/name: `SLAB`
  > This value will be used for publishing marks/scores. It will be known only to you and not you colleagues.
 
-# Preliminary Research
-
-First citations we will look at:
-+ [About Cramming](https://arxiv.org/pdf/2212.14034.pdf).
-+ [About the instructions on the GPT approach](https://arxiv.org/pdf/2203.02155.pdf).
-+ [About the BLOOM the multilignual language model](https://arxiv.org/pdf/2211.05100.pdf).
-+ [The opensource ChatGPT](https://github.com/LAION-AI/Open-Assistant).
+# First Submission Planning
 
 Developing the idea:
 1. Choosing a model - We would use a GPT based model (because of it's popularity), more specifically the RoBERTa implementation, found [here](https://huggingface.co/xlm-roberta-base). Or potentially some other model found on Hugging Face [here](https://huggingface.co/models?language=sl&sort=downloads).
@@ -36,5 +30,27 @@ Developing the idea:
     4. Another idea is to translate annotated TV subtitles found [here](https://github.com/zll17/TV4Dialog) with documentation [here](https://ieeexplore.ieee.org/document/9023129).
     5. **IMPORTANT**: We need to estimate how much data is enough to properly train a model.
 
+# Second Submission Planning
+
+*Next steps*:
++ Add decoder blocks to the end of a frozen model + possible pre training?
++ Model choice: T5 (transformers), GPT2, SloBERTa.
++ Define an evalaution protocol.
++ Choose format to unify the data (P3, Alpaka, ...).
++ Make a translation pipeline.
++ Preliminary training and testing.
+
 **Possible tools**:
 - All-In-One NLP pipelines: https://haystack.deepset.ai/overview/intro
+
+**Text-Generation Models** are available on [Hugging Face](https://huggingface.co/models?pipeline_tag=text2text-generation&language=sl&sort=downloads).  
+**Model Documentation**:  
+*Google*  
++ mT5 variants (multilingual T5, T5 = encoder decoder transformer for text generation, https://arxiv.org/abs/2010.11934)
++ byT5 variants (some adaptation of mT5, https://arxiv.org/abs/2105.13626)
+
+*BLOOM*  
++ mT0 (multilingual 0-shot instruction following, https://arxiv.org/abs/2211.01786)
+
+*CVJT*
++ T5-SL (pretraingin for slovenian language, https://arxiv.org/abs/2207.13988)
