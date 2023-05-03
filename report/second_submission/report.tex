@@ -56,7 +56,7 @@
 %----------------------------------------------------------------------------------------
 
 \Abstract{
-Slavko je car!
+% Slavko je car!
 }
 
 %----------------------------------------------------------------------------------------
@@ -156,6 +156,19 @@ The paper "OpenAssistant: Aligning Large Language Models with Human Preferences 
     In this way we do not translate the code literally (eg. Translating predefined words such as \textit{import} or \textit{let}.).
     We translate 8654 trees which totals to 78474 messages.
     We observe that the translations obtained using google translate are best after manual inspection of translations.
+
+    \begin{table}[!h]
+    \begin{tabular}{| l | r |}
+    \hline
+      Method        & Avg. overlap & \# Failures & Avg. FPS \\
+        \hline
+        Trees & 8654 \
+        Messages & 78474 \
+        \hline
+    \end{tabular}
+    \caption{Corpus Description}
+    \label{tab:perf}
+    \end{table}
 
     
 
