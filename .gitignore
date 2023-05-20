@@ -1,6 +1,9 @@
 # Data Folder
 data/
 
+# Models Folder
+models/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
