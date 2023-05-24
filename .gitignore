@@ -1,5 +1,7 @@
 # Data Folder
-data/
+data/gpt/
+data/*.json
+data/*.jsonl
 
 # Models Folder
 models/
