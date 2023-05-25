@@ -1,3 +1,5 @@
+import os
+
 from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, TextDataset, DataCollatorForLanguageModeling, AutoConfig
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -7,7 +9,10 @@ import re
 import nltk
 import numpy as np
 
-data = pd.read_csv("/d/hpc/projects/FRI/vh0153/nlp-course-vlr-hsj/data/processed/prompt_reply_pairs.csv", sep=";")
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+data = pd.read_csv("data/processed/prompt_reply_pairs.csv", sep=";")
 
 train_data = data[data["split"] == "train"]
 val_data = data[data["split"] == "val"]
@@ -20,6 +25,7 @@ test_data = ds.Dataset.from_pandas(test_data[['prompt', 'reply']])
 tokenizer = AutoTokenizer.from_pretrained("cjvt/gpt-sl-base", truncation=True, truncation_side='left')
 
 model = AutoModelForCausalLM.from_pretrained("cjvt/gpt-sl-base")
+print('Model loaded')
 
 def convert_to_features(examples):
     prefix_in = "Uporabnik: "
@@ -63,7 +69,7 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="/d/hpc/projects/FRI/vh0153/nlp-course-vlr-hsj/models/gpt-ft-3", #The output directory
+    output_dir="models/gpt-ft-3", #The output directory
     evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=2e-5,
