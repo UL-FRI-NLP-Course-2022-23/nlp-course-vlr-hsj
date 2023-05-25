@@ -2,6 +2,7 @@
 data/gpt/
 data/*.json
 data/*.jsonl
+data/*.zip
 
 # Models Folder
 models/
