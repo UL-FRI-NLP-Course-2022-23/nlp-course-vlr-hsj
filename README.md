@@ -8,6 +8,12 @@ Team members:
 Group public acronym/name: `SLAB`
  > This value will be used for publishing marks/scores. It will be known only to you and not you colleagues.
 
+ # Installation
+ ```bash	
+conda env create -f conda.yaml
+conda activate nlp
+ ```
+
 
 # Data
 
