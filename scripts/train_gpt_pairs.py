@@ -73,7 +73,7 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="models/gpt-sl-oasst1-pairs", #The output directory
+    output_dir=f"models/{pretrained_model.split('/')[-1][:6]}-oasst1-pairs", #The output directory
     evaluation_strategy='no',
     #evaluation_strategy="epoch",
     save_strategy="epoch",
