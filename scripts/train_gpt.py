@@ -1,18 +1,19 @@
 import os
 
-from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, TextDataset, DataCollatorForLanguageModeling, AutoConfig
-from sklearn.model_selection import train_test_split
+from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, DataCollatorForLanguageModeling, AutoConfig
+
 import pandas as pd
 import datasets as ds
-import torch
-import re
+
 import nltk
 import numpy as np
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+#os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["WANDB__SERVICE_WAIT"] = 300
 
-data = pd.read_csv("data/processed/prompt_reply_pairs.csv", sep=";")
+
+data = pd.read_csv("data/processed/context_reply_pairs.csv", sep=";")
 
 train_data = data[data["split"] == "train"]
 val_data = data[data["split"] == "val"]
@@ -28,8 +29,8 @@ model = AutoModelForCausalLM.from_pretrained("cjvt/gpt-sl-base")
 print('Model loaded')
 
 def convert_to_features(examples):
-    prefix_in = "Uporabnik: "
-    # prefix_in = ""
+    # prefix_in = "Uporabnik: "
+    prefix_in = ""
     examples["prompt"] = [prefix_in + prompt for prompt in examples["prompt"]]
     # prefix_out = "Asistent: "
     prefix_out = ""
@@ -69,19 +70,22 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="models/gpt-ft-3", #The output directory
-    evaluation_strategy="epoch",
+    output_dir="models/gpt-ft-3-context", #The output directory
+    evaluation_strategy='no',
+    #evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=2e-5,
-    per_device_train_batch_size=4,
-    per_device_eval_batch_size=4,
+    per_device_train_batch_size=2,
+    per_device_eval_batch_size=2,
     weight_decay=0.01,
     save_total_limit=3,
     num_train_epochs=10,
     push_to_hub=False, 
     fp16=True,
-    load_best_model_at_end=True, # load best model at end so we save the best model instead of the last model
-    report_to='wandb'
+    load_best_model_at_end=False,
+    #load_best_model_at_end=True, # load best model at end so we save the best model instead of the last model
+    report_to='wandb',
+    eval_accumulation_steps = 1,
 )
 
 data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
@@ -90,7 +94,7 @@ trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_data,
-    eval_dataset=val_data,
+    #eval_dataset=val_data,
     data_collator=data_collator,
     tokenizer=tokenizer,
     compute_metrics=compute_metrics

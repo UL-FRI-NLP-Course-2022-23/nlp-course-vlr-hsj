@@ -15,7 +15,7 @@ model_path = "models"
 
 
 model_checkpoint = "cjvt/t5-sl-large"
-name = model_checkpoint.split("/")[-1] + '-context'
+name = model_checkpoint.split("/")[-1] + '-pairs'
 
 epochs = 40
 batch_size = 4
@@ -27,7 +27,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 
 # LOAD data
-data = pd.read_csv("data/processed/context_reply_pairs.csv", sep=";")
+data = pd.read_csv("/d/hpc/projects/FRI/vh0153/nlp-course-vlr-hsj/data/processed/prompt_reply_pairs.csv", sep=";")
 data
 
 train_data = data[data["split"] == "train"]
@@ -40,8 +40,8 @@ val_data = Dataset.from_pandas(val_data[['prompt', 'reply']])
 test_data = Dataset.from_pandas(test_data[['prompt', 'reply']])
 
 def convert_to_features(examples):
-    # prefix_in = "Uporabnik: "
-    prefix_in = ""
+    prefix_in = "Uporabnik: "
+    # prefix_in = ""
     examples["prompt"] = [prefix_in + prompt for prompt in examples["prompt"]]
     # prefix_out = "Asistent: "
     prefix_out = ""
@@ -88,7 +88,6 @@ def compute_metrics(eval_pred):
 training_args = Seq2SeqTrainingArguments(
     output_dir=f"{model_path}/{name}-finetuned-assistant",
     evaluation_strategy="no",
-    #evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=2e-5,
     per_device_train_batch_size=batch_size,
@@ -122,17 +121,17 @@ trainer.save_model(f"{model_path}/{name}-finetuned-assistant")
 
 
 
-val_results = trainer.evaluate()
-print('Val results: ', val_results)
+# val_results = trainer.evaluate()
+# print('Val results: ', val_results)
 
 
-test_results = trainer.predict(test_dataset=test_data)
-print('Test results:', test_results.metrics)
+# test_results = trainer.predict(test_dataset=test_data)
+# print('Test results:', test_results.metrics)
 
 
 
-input = "Uporabnik: Kdo je France Prešeren?"
-input = tokenizer(input, return_tensors="pt").to("cuda")
-outputs = trainer.model.generate(**input, max_length=128, no_repeat_ngram_size=2, num_beams=5, num_return_sequences=5)
-tokenizer.decode(outputs[0], skip_special_tokens=True)
-tokenizer.batch_decode(outputs, skip_special_tokens=True)
+# input = "Uporabnik: Kdo je France Prešeren?"
+# input = tokenizer(input, return_tensors="pt").to("cuda")
+# outputs = trainer.model.generate(**input, max_length=128, no_repeat_ngram_size=2, num_beams=5, num_return_sequences=5)
+# tokenizer.decode(outputs[0], skip_special_tokens=True)
+# tokenizer.batch_decode(outputs, skip_special_tokens=True)
