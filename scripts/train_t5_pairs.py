@@ -27,7 +27,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 
 # LOAD data
-data = pd.read_csv("/d/hpc/projects/FRI/vh0153/nlp-course-vlr-hsj/data/processed/prompt_reply_pairs.csv", sep=";")
+data = pd.read_csv("data/processed/prompt_reply_pairs.csv", sep=";")
 data
 
 train_data = data[data["split"] == "train"]
