@@ -1,3 +1,4 @@
+import os
 
 import torch
 import nltk
@@ -12,7 +13,8 @@ SEED = 42
 nltk.download('punkt')
 
 model_path = "models"
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["WANDB__SERVICE_WAIT"] = "300"
 
 model_checkpoint = "cjvt/t5-sl-large"
 name = model_checkpoint.split("/")[-1] + '-pairs'
@@ -27,7 +29,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 
 # LOAD data
-data = pd.read_csv("/d/hpc/projects/FRI/vh0153/nlp-course-vlr-hsj/data/processed/prompt_reply_pairs.csv", sep=";")
+data = pd.read_csv("data/processed/prompt_reply_pairs.csv", sep=";")
 data
 
 train_data = data[data["split"] == "train"]
