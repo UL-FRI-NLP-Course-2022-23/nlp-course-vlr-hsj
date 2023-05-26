@@ -39,3 +39,6 @@ Translated OASST Data from English, Spanish, Russian and German:
 
 # Run inference
 Evaluation located in [evaluation.ipynb](./notebooks/evaluation/evaluation.ipynb) can be rerun for reproducibility purposes.
+
+# Report
+[Final Report](https://github.com/UL-FRI-NLP-Course-2022-23/nlp-course-vlr-hsj/blob/main/final_report.pdf)
