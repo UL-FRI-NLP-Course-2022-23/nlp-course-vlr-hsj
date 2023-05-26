@@ -225,7 +225,7 @@ Logar and Šikonja (2022) \cite{logar2022unified} discuss the challenges of ques
     \subsubsection*{Conversational Models}
     \noindent\textbf{T5} We fine-tune a T5-small model on answer pairs and two T5 large models. During the training of the large versions our training code kept crashing after the first epoch and thus we fit these models only for a sinlge epoch. Despite this these models still produce the best results out of all the trained models.
     
-    \noindent\textbf{GPT} We fine-tune two gpt-sl-base models for 10 epochs, one on context answers and one on prompt answer pairs. The training loss is visualized in  Fig.~\ref{fig/training_loss.png}.
+    \noindent\textbf{GPT} We fine-tune two gpt-sl-base models for 10 epochs, one on context answers and one on prompt answer pairs. The training loss is visualized in  Fig.~\ref{fig:training}.
 
 
     \subsubsection*{Rank Response Alignment}
@@ -245,7 +245,7 @@ Logar and Šikonja (2022) \cite{logar2022unified} discuss the challenges of ques
 
     ROUGE is a set of metrics for evaluating summarization and machine translation outputs. It measures content overlap using n-gram matches and sequence-based measures, providing insights into system effectiveness.
 
-    \begin{table*}[!hb]
+    \begin{table*}[thb]
     	\caption{\textbf{Performance Comparison}}
     	\centering
         \scalebox{1}{
@@ -269,21 +269,16 @@ Logar and Šikonja (2022) \cite{logar2022unified} discuss the challenges of ques
     	\label{tab:results}
     \end{table*}
 
-
-    In Table \ref{tab:results} we can observe the scores obtained using our models.
-    We can see that all of the models improve in the number of epochs we left them to train (different because of limitations with computational resources and time).
-    We observe that the training loss of all models quickly drops in the first few epochs and the only slightly decreases with time which can be seen in Figure \ref{fig:training} for two of the fitted models.
-    
-
     \begin{figure}[h]\centering
 	\includegraphics[width=\linewidth]{fig/training_loss.png}
 	\caption{\textbf{GPT-B Training Loss.} GPT models with context and reply pairs were trained for 10 epochs each. The difference in the number of steps is due to the training set sizes.}
 	\label{fig:training}
     \end{figure}
 
-
+    In Table \ref{tab:results} we can observe the scores obtained using our models.
+    We can see that all of the models improve in the number of epochs we left them to train (different because of limitations with computational resources and time).
+    We observe that the training loss of all models quickly drops in the first few epochs and the only slightly decreases with time which can be seen in Figure~\ref{fig:training} for two of the fitted models.
     
-
     %-------------------------
     \subsection*{Qualitative results}
     Alongside the quantitative evaluation using the ROUGE and Bert scores we also perform qualitative evaluation. We compare the outputs of our model to the responses of ChatGPT in Slovene and OpenAssistant replies translated to Slovene.\footnote{At the time of writing Google's Bard is unavailable in Slovenia}
@@ -355,7 +350,7 @@ Logar and Šikonja (2022) \cite{logar2022unified} discuss the challenges of ques
 
 \section*{Discussion}
     The results of the models tell us that it is important to correctly define the finetuning process. Different models behave differently, and thus when they are trained on the same dataset, we can expect different performance. This is only exasperated by the fact that they were not trained equally. While it is made sure that they are trained with the same hyper-parameters, the available hardware, made it difficult to finetune all the models for the same amount of time. This shortcoming, makes it difficult to directly compare the models, and while we can infer to the true behaviour, we can't draw direct comparisons.\\
-    During the RRHF inference we should be able to produce multiple replies using our finetuned language model and then employ reply ranking to select the best reply. However, because the model does not fit well (has oscillating loss), this process produces almost the same probabilities every time. We conclude, that more care should be taken to better fit the model, which could produce better results.  
+    During the RRHF inference we should be able to produce multiple replies using our finetuned language model and then employ reply ranking to select the best reply. However, because the model does not fit well (has oscillating loss), this process produces almost the same probabilities every time. We conclude, that more care should be taken to better fit the model, which could produce better results.   
 
 % Results and discussion show the results and comments on the performance of algorithms. Discussion also points out where the algorithms do not work well and where they achieve good performance. In the conclusion the authors should point out shortcomings of their approaches and give at least one idea for improvements in the future. When reading the report, you could get a feeling that authors know what they are doing, sensibly selected approaches and critically explain and discuss their results.
 
