@@ -1,4 +1,4 @@
-# Natural language processing course 2022/23: `Slovenian Language Assistance Bot`
+# Natural language processing course 2022/23: `Slovenian Language Assistant for Virtual Conversations (SLAVC)`
 
 Team members:
  * `Robert Jutreša`, `63180138`, `rj7149@student.uni-lj.si`
@@ -38,12 +38,6 @@ Translated OASST Data from English, Spanish, Russian and German:
 * https://huggingface.co/vh-student/gpt-sl-oasst1-context
 * https://huggingface.co/vh-student/sloberta-si-rrhf
 
-
-# Environment Setup
-
-```
->conda env create -f conda.yaml -n <env_name>
-```
 
 # Run inference
 You can run the evaluation located in [evaluation.ipynb](./notebooks/evaluation/evaluation.ipynb).
