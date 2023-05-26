@@ -1,5 +1,15 @@
 # Data Folder
-data/
+data/gpt/
+data/*.json
+data/*.jsonl
+data/*.zip
+
+# Models Folder
+models/*
+!models/README.md
+
+# wandv stuff
+wandb/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
