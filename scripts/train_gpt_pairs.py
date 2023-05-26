@@ -10,7 +10,7 @@ import numpy as np
 
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-os.environ["WANDB__SERVICE_WAIT"] = 300
+os.environ["WANDB__SERVICE_WAIT"] = "300"
 
 
 data = pd.read_csv("data/processed/prompt_reply_pairs.csv", sep=";")
@@ -27,6 +27,7 @@ tokenizer = AutoTokenizer.from_pretrained("cjvt/gpt-sl-base", truncation=True, t
 
 model = AutoModelForCausalLM.from_pretrained("cjvt/gpt-sl-base")
 print('Model loaded')
+print('Training GPT2: answer-reply pairs')
 
 def convert_to_features(examples):
     prefix_in = "Uporabnik: "
@@ -70,7 +71,7 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="models/gpt-ft-3-pairs", #The output directory
+    output_dir="models/gpt-sl-oasst1-pairs", #The output directory
     evaluation_strategy='no',
     #evaluation_strategy="epoch",
     save_strategy="epoch",
