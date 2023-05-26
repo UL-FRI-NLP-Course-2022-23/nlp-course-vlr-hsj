@@ -1,3 +1,4 @@
+import os
 
 import torch
 import nltk
@@ -12,7 +13,8 @@ SEED = 42
 nltk.download('punkt')
 
 model_path = "models"
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["WANDB__SERVICE_WAIT"] = "300"
 
 model_checkpoint = "cjvt/t5-sl-large"
 name = model_checkpoint.split("/")[-1] + '-pairs'

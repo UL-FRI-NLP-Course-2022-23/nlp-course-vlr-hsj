@@ -9,7 +9,7 @@ import nltk
 import numpy as np
 
 
-#os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["WANDB__SERVICE_WAIT"] = "300"
 
 pretrained_model = "macedonizer/sl-gpt2"
