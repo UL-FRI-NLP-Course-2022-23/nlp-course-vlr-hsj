@@ -12,6 +12,8 @@ import numpy as np
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["WANDB__SERVICE_WAIT"] = 300
 
+pretrained_model = "macedonizer/sl-gpt2"
+# pretrained_model = "cjvt/gpt-sl-base"
 
 data = pd.read_csv("data/processed/context_reply_pairs.csv", sep=";")
 
@@ -23,9 +25,9 @@ train_data = ds.Dataset.from_pandas(train_data[['prompt', 'reply']])
 val_data = ds.Dataset.from_pandas(val_data[['prompt', 'reply']])
 test_data = ds.Dataset.from_pandas(test_data[['prompt', 'reply']])
 
-tokenizer = AutoTokenizer.from_pretrained("cjvt/gpt-sl-base", truncation=True, truncation_side='left')
+tokenizer = AutoTokenizer.from_pretrained(pretrained_model, truncation=True, truncation_side='left')
 
-model = AutoModelForCausalLM.from_pretrained("cjvt/gpt-sl-base")
+model = AutoModelForCausalLM.from_pretrained(pretrained_model)
 print('Model loaded')
 print('Training GPT2: context-reply pairs')
 
@@ -71,7 +73,7 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="models/gpt-sl-oasst1-context", #The output directory
+    output_dir=f"models/{pretrained_model.split('/')[-1][:6]}-oasst1-pairs", #The output directory
     evaluation_strategy='no',
     #evaluation_strategy="epoch",
     save_strategy="epoch",
