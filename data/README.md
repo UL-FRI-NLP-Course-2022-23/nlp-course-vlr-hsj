@@ -7,3 +7,5 @@ OASST Data:
 
 Translated OASST Data from English, Spanish, Russian and German:
 [oasst-ready_for_export-translated](https://unilj-my.sharepoint.com/:u:/g/personal/ls1906_student_uni-lj_si/EZTsjBHFsbtPrb2Ur6k1AiwBRZDVcilb3zWtvCto38deFA?e=DHn9az)
+
+[Kaggle Version](https://www.kaggle.com/datasets/valterh/oasst1-sl)
