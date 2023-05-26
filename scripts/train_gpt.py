@@ -27,6 +27,7 @@ tokenizer = AutoTokenizer.from_pretrained("cjvt/gpt-sl-base", truncation=True, t
 
 model = AutoModelForCausalLM.from_pretrained("cjvt/gpt-sl-base")
 print('Model loaded')
+print('Training GPT2: context-reply pairs')
 
 def convert_to_features(examples):
     # prefix_in = "Uporabnik: "
@@ -70,7 +71,7 @@ def compute_metrics(eval_pred):
     return {k: round(v, 4) for k, v in result.items()}
 
 training_args = TrainingArguments(
-    output_dir="models/gpt-ft-3-context", #The output directory
+    output_dir="models/gpt-sl-oasst1-context", #The output directory
     evaluation_strategy='no',
     #evaluation_strategy="epoch",
     save_strategy="epoch",
