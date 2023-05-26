@@ -5,8 +5,6 @@ Team members:
  * `Luka Škodnik`, `63180033`, `ls1906@student.uni-lj.si`
  * `Valter Hudovernik`, `63160134`, `vh0153@student.uni-lj.si`
  
-Group public acronym/name: `SLAB`
- > This value will be used for publishing marks/scores. It will be known only to you and not you colleagues.
 
  # Installation
  ```bash	
@@ -31,13 +29,13 @@ Translated OASST Data from English, Spanish, Russian and German:
 
 # Trained models
 
-* https://huggingface.co/ls1906/t5-sl-small-finetuned-assistant
-* https://huggingface.co/vh-student/t5-sl-large-oasst-pairs
-* https://huggingface.co/vh-student/t5-sl-large-oasst-context
-* https://huggingface.co/vh-student/gpt-sl-oasst1-pairs
-* https://huggingface.co/vh-student/gpt-sl-oasst1-context
-* https://huggingface.co/vh-student/sloberta-si-rrhf
+* [ls1906/t5-sl-small-finetuned-assistant](https://huggingface.co/ls1906/t5-sl-small-finetuned-assistant)
+* [vh-student/t5-sl-large-oasst-pairs](https://huggingface.co/vh-student/t5-sl-large-oasst-pairs)
+* [vh-student/t5-sl-large-oasst-context](https://huggingface.co/vh-student/t5-sl-large-oasst-context)
+* [vh-student/gpt-sl-oasst1-pairs](https://huggingface.co/vh-student/gpt-sl-oasst1-pairs)
+* [vh-student/gpt-sl-oasst1-context](https://huggingface.co/vh-student/gpt-sl-oasst1-context)
+* [vh-student/sloberta-si-rrhf](https://huggingface.co/vh-student/sloberta-si-rrhf)
 
 
 # Run inference
-You can run the evaluation located in [evaluation.ipynb](./notebooks/evaluation/evaluation.ipynb).
+Evaluation located in [evaluation.ipynb](./notebooks/evaluation/evaluation.ipynb) can be rerun for reproducibility purposes.
