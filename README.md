@@ -5,6 +5,8 @@ Team members:
  * `Luka Škodnik`, `63180033`, `ls1906@student.uni-lj.si`
  * `Valter Hudovernik`, `63160134`, `vh0153@student.uni-lj.si`
  
+ Group public acronym/name: `SLAB`
+ > This value will be used for publishing marks/scores. It will be known only to you and not you colleagues.
 
  # Installation
  ```bash	
